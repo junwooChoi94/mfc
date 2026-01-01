@@ -52,6 +52,10 @@ END_MESSAGE_MAP()
 
 CListControlDlg::CListControlDlg(CWnd* pParent /*=nullptr*/)
 	: CDialogEx(IDD_LISTCONTROL_DIALOG, pParent)
+	, m_strDept(_T(""))
+	, m_strID(_T(""))
+	, m_strName(_T(""))
+	, m_strSelctItem(_T(""))
 {
 	m_hIcon = AfxGetApp()->LoadIcon(IDR_MAINFRAME);
 }
@@ -59,6 +63,11 @@ CListControlDlg::CListControlDlg(CWnd* pParent /*=nullptr*/)
 void CListControlDlg::DoDataExchange(CDataExchange* pDX)
 {
 	CDialogEx::DoDataExchange(pDX);
+	DDX_Control(pDX, IDC_LIST_STUDENT, m_listStudent);
+	DDX_Control(pDX, IDC_EDIT_DEPT, m_strDept);
+	DDX_Control(pDX, IDC_EDIT_ID, m_strID);
+	DDX_Control(pDX, IDC_EDIT_NAME, m_strName);
+	DDX_Control(pDX, IDC_EDIT_SELECT_ITEM, m_strSelctItem);
 }
 
 BEGIN_MESSAGE_MAP(CListControlDlg, CDialogEx)

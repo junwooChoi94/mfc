@@ -31,4 +31,10 @@ protected:
 	afx_msg void OnPaint();
 	afx_msg HCURSOR OnQueryDragIcon();
 	DECLARE_MESSAGE_MAP()
+public:
+	CListCtrl m_listStudent;
+	CString m_strDept;
+	CString m_strID;
+	CString m_strName;
+	CString m_strSelctItem;
 };
