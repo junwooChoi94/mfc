@@ -63,11 +63,12 @@ CListControlDlg::CListControlDlg(CWnd* pParent /*=nullptr*/)
 void CListControlDlg::DoDataExchange(CDataExchange* pDX)
 {
 	CDialogEx::DoDataExchange(pDX);
+
 	DDX_Control(pDX, IDC_LIST_STUDENT, m_listStudent);
-	DDX_Control(pDX, IDC_EDIT_DEPT, m_strDept);
-	DDX_Control(pDX, IDC_EDIT_ID, m_strID);
-	DDX_Control(pDX, IDC_EDIT_NAME, m_strName);
-	DDX_Control(pDX, IDC_EDIT_SELECT_ITEM, m_strSelctItem);
+	DDX_Text(pDX, IDC_EDIT_DEPT, m_strDept);
+	DDX_Text(pDX, IDC_EDIT_ID, m_strID);
+	DDX_Text(pDX, IDC_EDIT_NAME, m_strName);
+	DDX_Text(pDX, IDC_EDIT_SELECT_ITEM, m_strSelctItem);
 }
 
 BEGIN_MESSAGE_MAP(CListControlDlg, CDialogEx)
@@ -109,6 +110,20 @@ BOOL CListControlDlg::OnInitDialog()
 	SetIcon(m_hIcon, FALSE);		// Set small icon
 
 	// TODO: Add extra initialization here
+	m_listStudent.InsertColumn(0, _T("순번"), LVCFMT_CENTER, 60);
+	m_listStudent.InsertColumn(1, _T("학과"), LVCFMT_CENTER, 190);
+	m_listStudent.InsertColumn(2, _T("학번"), LVCFMT_CENTER, 150);
+	m_listStudent.InsertColumn(3, _T("이름"), LVCFMT_CENTER, 150);
+
+	// list Control 의 선택 시 전체 행이 선택되게 하고 그리드 라인이 표시되게 스타일 변경
+	m_listStudent.SetExtendedStyle(m_listStudent.GetExtendedStyle() | LVS_EX_FULLROWSELECT | LVS_EX_GRIDLINES);
+
+	// list control  스타일 변경을 위해 콤보 상자의 초기 선택값 지정
+	((CComboBox*)GetDlgItem(IDC_COMBO_STYLE))->SetCurSel(0);
+
+	//수정 , 삭제 버튼을 비활성화
+	((CButton*)GetDlgItem(IDC_BUTTON_MODIFY))->EnableWindow(FALSE);
+	((CButton*)GetDlgItem(IDC_BUTTON_DELETE))->EnableWindow(FALSE);
 
 	return TRUE;  // return TRUE  unless you set the focus to a control
 }
