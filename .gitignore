@@ -1,0 +1,9 @@
+# Visual Studio 빌드 파일 및 임시 파일 제외
+.vs/
+Debug/
+Release/
+ipch/
+*.pch
+*.db
+*.sdf
+*.zip
